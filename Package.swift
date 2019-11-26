@@ -1,19 +1,41 @@
+// swift-tools-version:5.0
+// The swift-tools-version declares the minimum version of Swift required to build this package.
 import PackageDescription
+
+let alamofireVersionStr = "5.0.0-rc.2"
+let objectMapperVersionStr = "3.5.1"
 
 let package = Package(
     name: "AlamofireObjectMapper",
     platforms: [
-        .iOS(.v11)
+        .iOS(.v10),
+        .tvOS(.v10),
+        .watchOS(.v3),
+        .macOS(.v10_12),
     ],
     products: [
-        .library(name: "AlamofireObjectMapper", targets: ["AlamofireObjectMapper"]),
+        .library(
+            name: "AlamofireObjectMapper",
+            targets: ["AlamofireObjectMapper"]
+        )
     ],
     dependencies: [
-        .package(url: "https://github.com/NeoChow/Alamofire", .branch("tweak-package-file")),
-        .package(url: "https://github.com/tristanhimmelman/ObjectMapper", .revision("feb763a93755b5b576e09a9db2cb8d380fd65ba2")),
+        .package(url: "https://github.com/Alamofire/Alamofire.git", .exact(Version(alamofireVersionStr)!)),
+        .package(url: "https://github.com/tristanhimmelman/ObjectMapper.git", .exact(Version(objectMapperVersionStr)!)),
     ],
     targets: [
-        .target(name: "AlamofireObjectMapper", dependencies: ["Alamofire", "ObjectMapper"], path: "AlamofireObjectMapper"),
+        .target(
+            name: "AlamofireObjectMapper",
+            dependencies: [
+                "Alamofire",
+                "ObjectMapper"
+            ],
+            path: "AlamofireObjectMapper",            exclude: [
+                "AlamofireObjectMapperTest",
+                "Carthage"
+            ]
+        ),
     ],
-    swiftLanguageVersions: [.v5, .v4]
+    swiftLanguageVersions: [.v5]
 )
+let version = Version(6, 2, 0)

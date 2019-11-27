@@ -2,8 +2,8 @@
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 import PackageDescription
 
-let alamofireVersionStr = "5.0.0-rc.2"
-let objectMapperVersionStr = "3.5.1"
+let alamofireVersionStr = "4.9.1"
+let objectMapperVersionStr = "3.4"
 
 let package = Package(
     name: "AlamofireObjectMapper",

@@ -2,8 +2,8 @@
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 import PackageDescription
 
-let alamofireVersionStr = "4.9.1"
-let objectMapperVersionStr = "3.4"
+let alamofireVersionStr = "5.0.0-rc.2"
+let objectMapperVersionStr = "3.5.1"
 
 let package = Package(
     name: "AlamofireObjectMapper",
@@ -21,7 +21,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/Alamofire/Alamofire.git", .exact(Version(alamofireVersionStr)!)),
-        .package(url: "https://github.com/tristanhimmelman/ObjectMapper.git", .exact(Version(objectMapperVersionStr)!))
+        .package(url: "https://github.com/tristanhimmelman/ObjectMapper.git", .exact(Version(objectMapperVersionStr)!)),
     ],
     targets: [
         .target(
@@ -30,7 +30,8 @@ let package = Package(
                 "Alamofire",
                 "ObjectMapper"
             ],
-            path: "AlamofireObjectMapper",            exclude: [
+            path: "AlamofireObjectMapper",
+            exclude: [
                 "AlamofireObjectMapperTest",
                 "Carthage"
             ]
